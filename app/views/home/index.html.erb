@@ -1,12 +1,18 @@
-<!-- app/views/home/index.html.erb -->
+<!-- app/views/layouts/_navbar.html.erb -->
 
-<h1>Welcome to My App</h1>
+<nav class="navbar">
+  <div class="container">
+    <%= link_to root_path, class: 'navbar-logo' do %>
+      <%= image_tag('https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Emblem_of_Ethiopia.svg/1200px-Emblem_of_Ethiopia.svg.png', alt: 'Logo') %> 
+    <% end %>
 
-<p>Explore our awesome features!</p>
-
-<% if user_signed_in? %>
-   <p><%= link_to "Log out", destroy_user_session_path, data: { turbo_method: :delete } %></p>
-<% else %>
-  <p><%= link_to "Sign In", new_user_session_path %></p>
-  <p><%= link_to "Sign Up", new_user_registration_path %></p>
-<% end %>
+    <div class="navbar-links">
+      <% if user_signed_in? %>
+        <%= link_to "Log out", destroy_user_session_path, data: { turbo_method: :delete }, class: 'navbar-link' %>
+      <% else %>
+        <%= link_to "Sign In", new_user_session_path, class: 'navbar-link' %>
+        <%= link_to "Sign Up", new_user_registration_path, class: 'navbar-link' %>
+      <% end %>
+    </div>
+  </div>
+</nav>
